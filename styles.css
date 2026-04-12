@@ -629,6 +629,10 @@ body {
   will-change: transform;
 }
 
+.gallery-scroll.is-scrolling .gallery-item {
+  transition: none;
+}
+
 .gallery-item img {
   width: 100%;
   height: 100%;
