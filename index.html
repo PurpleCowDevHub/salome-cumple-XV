@@ -6,7 +6,10 @@
   <title>Invitación Salomé</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Style+Script&family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Style+Script&family=Cormorant+Garamond:wght@400;700&display=swap" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=Style+Script&family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Style+Script&family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet" /></noscript>
+  <link rel="preload" href="images/salome-hero.jpeg" as="image" />
   <link rel="stylesheet" href="styles.css" />
   <script>
     // Asegurar que siempre comienza al inicio de la página
@@ -16,7 +19,7 @@
   </script>
 </head>
 <body>
-  <audio id="bg-music" loop preload="auto" playsinline>
+  <audio id="bg-music" loop preload="metadata" playsinline>
     <source src="assets/background-music.mp3" type="audio/mpeg">
   </audio>
   <div class="welcome-overlay" id="welcome-overlay" role="dialog" aria-modal="true" aria-labelledby="welcome-title" aria-describedby="welcome-copy">
@@ -163,8 +166,7 @@
       const encodedMessage = encodeURIComponent(message);
       whatsappButton.href = `https://wa.me/${phone}?text=${encodedMessage}`;
     }
-  </script>
-  <script>
+
     // Llevar al usuario al inicio de la página
     function scrollToTop() {
       window.scrollTo({top: 0, left: 0, behavior: 'auto'});
@@ -172,11 +174,8 @@
       document.body.scrollTop = 0;
     }
     
-    // Ejecutar múltiples veces para asegurar
     scrollToTop();
     window.addEventListener('load', scrollToTop);
-    setTimeout(scrollToTop, 100);
-    setTimeout(scrollToTop, 500);
   </script>
 </body>
 </html>
