@@ -2,35 +2,26 @@ const audio = document.querySelector('#bg-music');
 
 if (audio) {
   let started = false;
-  let touchStartY = null;
+  let starting = false;
 
-  const scrollKeys = new Set([
-    'ArrowDown',
-    'ArrowUp',
-    'PageDown',
-    'PageUp',
-    'Space',
-    'Home',
-    'End',
-  ]);
+  const unlockEvents = [
+    ['pointerup', { passive: true }],
+    ['touchend', { passive: true }],
+    ['click', undefined],
+  ];
 
   const removeUnlockListeners = () => {
-    window.removeEventListener('wheel', onWheel);
-    window.removeEventListener('scroll', onScroll);
-    window.removeEventListener('touchstart', onTouchStart);
-    window.removeEventListener('touchmove', onTouchMove);
-    window.removeEventListener('touchend', onTouchEnd);
-    window.removeEventListener('pointerdown', onPointerDown);
-    window.removeEventListener('pointerup', onPointerUp);
-    window.removeEventListener('click', onClick);
-    window.removeEventListener('keydown', onKeyDown);
+    unlockEvents.forEach(([eventName, options]) => {
+      window.removeEventListener(eventName, startAudio, options);
+    });
   };
 
   const startAudio = () => {
-    if (started) {
+    if (started || starting) {
       return;
     }
 
+    starting = true;
     audio.muted = false;
 
     const playPromise = audio.play();
@@ -38,86 +29,32 @@ if (audio) {
     if (playPromise && typeof playPromise.then === 'function') {
       playPromise
         .then(() => {
-          started = true;
-          removeUnlockListeners();
+          started = !audio.paused;
+          starting = false;
+
+          if (started) {
+            removeUnlockListeners();
+          }
+
+          return null;
         })
         .catch(() => {
-          started = false;
+          starting = false;
         });
       return;
     }
 
     started = !audio.paused;
+    starting = false;
 
     if (started) {
       removeUnlockListeners();
     }
   };
 
-  const onWheel = () => {
-    startAudio();
-  };
-
-  const onScroll = () => {
-    if (!started) {
-      startAudio();
-    }
-  };
-
-  const onPointerDown = () => {
-    touchStartY = null;
-  };
-
-  const onPointerUp = () => {
-    startAudio();
-  };
-
-  const onTouchStart = (event) => {
-    const touch = event.touches?.[0];
-    touchStartY = touch ? touch.clientY : null;
-  };
-
-  const onTouchMove = (event) => {
-    const touch = event.touches?.[0];
-
-    if (!touch) {
-      return;
-    }
-
-    if (touchStartY === null) {
-      touchStartY = touch.clientY;
-      return;
-    }
-
-    // Only unlock after an actual swipe movement.
-    if (Math.abs(touch.clientY - touchStartY) > 6) {
-      startAudio();
-    }
-  };
-
-  const onTouchEnd = () => {
-    startAudio();
-  };
-
-  const onClick = () => {
-    startAudio();
-  };
-
-  const onKeyDown = (event) => {
-    if (scrollKeys.has(event.code)) {
-      startAudio();
-    }
-  };
-
-  window.addEventListener('wheel', onWheel, { passive: true });
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('pointerdown', onPointerDown, { passive: true });
-  window.addEventListener('pointerup', onPointerUp, { passive: true });
-  window.addEventListener('touchstart', onTouchStart, { passive: true });
-  window.addEventListener('touchmove', onTouchMove, { passive: true });
-  window.addEventListener('touchend', onTouchEnd, { passive: true });
-  window.addEventListener('click', onClick);
-  window.addEventListener('keydown', onKeyDown);
+  unlockEvents.forEach(([eventName, options]) => {
+    window.addEventListener(eventName, startAudio, options);
+  });
 
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible' && !started && !audio.paused) {
