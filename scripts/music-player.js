@@ -19,6 +19,10 @@ if (audio) {
     window.removeEventListener('scroll', onScroll);
     window.removeEventListener('touchstart', onTouchStart);
     window.removeEventListener('touchmove', onTouchMove);
+    window.removeEventListener('touchend', onTouchEnd);
+    window.removeEventListener('pointerdown', onPointerDown);
+    window.removeEventListener('pointerup', onPointerUp);
+    window.removeEventListener('click', onClick);
     window.removeEventListener('keydown', onKeyDown);
   };
 
@@ -60,6 +64,14 @@ if (audio) {
     }
   };
 
+  const onPointerDown = () => {
+    touchStartY = null;
+  };
+
+  const onPointerUp = () => {
+    startAudio();
+  };
+
   const onTouchStart = (event) => {
     const touch = event.touches?.[0];
     touchStartY = touch ? touch.clientY : null;
@@ -83,6 +95,14 @@ if (audio) {
     }
   };
 
+  const onTouchEnd = () => {
+    startAudio();
+  };
+
+  const onClick = () => {
+    startAudio();
+  };
+
   const onKeyDown = (event) => {
     if (scrollKeys.has(event.code)) {
       startAudio();
@@ -91,8 +111,12 @@ if (audio) {
 
   window.addEventListener('wheel', onWheel, { passive: true });
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('pointerdown', onPointerDown, { passive: true });
+  window.addEventListener('pointerup', onPointerUp, { passive: true });
   window.addEventListener('touchstart', onTouchStart, { passive: true });
   window.addEventListener('touchmove', onTouchMove, { passive: true });
+  window.addEventListener('touchend', onTouchEnd, { passive: true });
+  window.addEventListener('click', onClick);
   window.addEventListener('keydown', onKeyDown);
 
   document.addEventListener('visibilitychange', () => {
