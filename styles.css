@@ -774,6 +774,17 @@ body {
 }
 
 @media (max-width: 560px) {
+  .eyebrow {
+    font-size: clamp(1.5rem, 5.3vw, 1.66rem);
+    line-height: 1.35;
+  }
+
+  .description {
+    font-size: clamp(1.32rem, 5.1vw, 1.5rem);
+    line-height: 1.45;
+    letter-spacing: 0.02em;
+  }
+
   .hero-flower-top {
     width: clamp(116px, 33vw, 158px);
     top: clamp(-20px, -4.6vw, -11px);
