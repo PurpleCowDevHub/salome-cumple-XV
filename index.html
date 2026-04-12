@@ -8,6 +8,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Style+Script&family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    // Asegurar que siempre comienza al inicio de la página
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    window.scrollY = 0;
+  </script>
 </head>
 <body>
   <audio id="bg-music" loop preload="auto" playsinline>
@@ -135,7 +141,7 @@
         <hr class="section-divider">
         <h3 class="gallery-title">Confirmar asistencia</h3>
         <p class="rsvp-text">Para nosotros, Edisson y Diana, es muy importante contar contigo en esta noche tan especial. Si tienes alguna novedad o deseas confirmar tu asistencia, escríbenos por WhatsApp.</p>
-        <a href="https://wa.me/573212242308?text=Hola%20Edisson%20y%20Diana%2C%20confirmo%20mi%20asistencia%20a%20los%2015%20de%20Salome." target="_blank" rel="noopener noreferrer" class="maps-button">Confirmar asistencia</a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="maps-button" data-whatsapp-button data-phone="573212242308">Confirmar asistencia</a>
         <p class="event-hashtag">#SaloBrillaEnSus15</p>
       </section>
     </div>
@@ -148,5 +154,29 @@
   <script src="scripts/music-player.js"></script>
   <script src="scripts/event-countdown.js"></script>
   <script src="scripts/gallery-carousel.js"></script>
+  <script>
+    // Construir dinámicamente el enlace de WhatsApp
+    const whatsappButton = document.querySelector('[data-whatsapp-button]');
+    if (whatsappButton) {
+      const message = '¡Hola, Edisson y Diana! Qué alegría poder acompañarlos en los 15 de Salomé. ¡Confirmo mi asistencia!';
+      const phone = whatsappButton.dataset.phone;
+      const encodedMessage = encodeURIComponent(message);
+      whatsappButton.href = `https://wa.me/${phone}?text=${encodedMessage}`;
+    }
+  </script>
+  <script>
+    // Llevar al usuario al inicio de la página
+    function scrollToTop() {
+      window.scrollTo({top: 0, left: 0, behavior: 'auto'});
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
+    
+    // Ejecutar múltiples veces para asegurar
+    scrollToTop();
+    window.addEventListener('load', scrollToTop);
+    setTimeout(scrollToTop, 100);
+    setTimeout(scrollToTop, 500);
+  </script>
 </body>
 </html>
