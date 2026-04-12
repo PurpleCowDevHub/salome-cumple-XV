@@ -1,4 +1,6 @@
 const audio = document.querySelector('#bg-music');
+const welcomeOverlay = document.querySelector('#welcome-overlay');
+const startButton = document.querySelector('[data-start-experience]');
 
 if (audio) {
   let started = false;
@@ -14,6 +16,16 @@ if (audio) {
     unlockEvents.forEach(([eventName, options]) => {
       window.removeEventListener(eventName, startAudio, options);
     });
+  };
+
+  const dismissWelcomeOverlay = () => {
+    if (!welcomeOverlay) {
+      return;
+    }
+
+    welcomeOverlay.classList.add('is-hidden');
+    welcomeOverlay.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('no-scroll');
   };
 
   const startAudio = () => {
@@ -51,6 +63,15 @@ if (audio) {
       removeUnlockListeners();
     }
   };
+
+  if (welcomeOverlay && startButton) {
+    document.body.classList.add('no-scroll');
+
+    startButton.addEventListener('click', () => {
+      dismissWelcomeOverlay();
+      startAudio();
+    });
+  }
 
   unlockEvents.forEach(([eventName, options]) => {
     window.addEventListener(eventName, startAudio, options);
