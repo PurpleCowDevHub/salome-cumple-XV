@@ -203,7 +203,7 @@ body.no-scroll {
 
 .credits-bar {
   width: min(100%, 920px);
-  margin-top: 10px;
+  margin: 10px auto 0;
   padding: 10px 16px;
   border: none;
   border-radius: var(--radius-sm);
@@ -218,6 +218,7 @@ body.no-scroll {
 
 .box {
   width: min(100%, 920px);
+  margin-inline: auto;
   min-height: 640px;
   border-radius: 32px;
   background: var(--white);
@@ -1183,6 +1184,18 @@ body.no-scroll {
     padding-right: 20px;
   }
 
+  .event-info {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .age-image-container {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+
   .image-oval {
     max-width: 294px;
   }
@@ -1244,7 +1257,7 @@ body.no-scroll {
   .gallery-title {
     font-size: clamp(3.3rem, 12.3vw, 4.4rem);
     margin-top: 12px;
-  }}
+  }
 
   .oval-name {
     font-size: 7rem;
@@ -1387,3 +1400,5 @@ body.no-scroll {
   .box::before {
     left: -8px;
   }
+
+}
