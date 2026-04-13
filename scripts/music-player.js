@@ -18,14 +18,44 @@ if (audio) {
     });
   };
 
+  const focusMainContent = () => {
+    const mainContent = document.querySelector('main');
+
+    if (!mainContent) {
+      return;
+    }
+
+    if (!mainContent.hasAttribute('tabindex')) {
+      mainContent.setAttribute('tabindex', '-1');
+    }
+
+    mainContent.focus({ preventScroll: true });
+    mainContent.addEventListener(
+      'blur',
+      () => {
+        if (mainContent.getAttribute('tabindex') === '-1') {
+          mainContent.removeAttribute('tabindex');
+        }
+      },
+      { once: true }
+    );
+  };
+
   const dismissWelcomeOverlay = () => {
     if (!welcomeOverlay) {
       return;
     }
 
+    const activeElement = document.activeElement;
+    if (activeElement && welcomeOverlay.contains(activeElement) && typeof activeElement.blur === 'function') {
+      activeElement.blur();
+    }
+
+    welcomeOverlay.setAttribute('inert', '');
     welcomeOverlay.classList.add('is-hidden');
     welcomeOverlay.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('no-scroll');
+    focusMainContent();
   };
 
   const startAudio = () => {

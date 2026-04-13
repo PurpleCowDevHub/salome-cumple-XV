@@ -683,7 +683,9 @@ body.no-scroll {
 }
 
 .maps-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 16px 42px;
   background: linear-gradient(135deg, #769ac1 0%, var(--blue-strong) 100%);
   color: var(--white);
@@ -700,6 +702,7 @@ body.no-scroll {
   box-shadow: 0 14px 28px rgba(79, 115, 157, 0.24);
   letter-spacing: 0.05em;
   text-shadow: var(--shadow-text);
+  white-space: nowrap;
 }
 
 .maps-button:active {
@@ -760,7 +763,7 @@ body.no-scroll {
   width: 100%;
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(200px, 76%);
+  grid-auto-columns: minmax(210px, 80%);
   gap: 14px;
   overflow-x: auto;
   overscroll-behavior-x: contain;
@@ -768,7 +771,7 @@ body.no-scroll {
   scrollbar-width: none;
   -ms-overflow-style: none;
   perspective: 1000px;
-  padding: 18px 12px 50px;
+  padding: 18px 12px 58px;
 }
 
 .gallery-scroll::-webkit-scrollbar {
@@ -786,7 +789,7 @@ body.no-scroll {
   scroll-snap-align: center;
   background: var(--white);
   transform-origin: center center;
-  transform: scale(0.94);
+  transform: scale(0.96);
   opacity: 0.78;
   transition: transform 0.26s ease, box-shadow 0.26s ease, opacity 0.26s ease;
   will-change: transform;
@@ -805,12 +808,12 @@ body.no-scroll {
 }
 
 .psalm {
-  margin: var(--space-tight) auto 0;
+  margin: clamp(0px, 4.2vw, 30px) auto 0;
   width: min(100%, 700px);
   padding: 0;
   text-align: center;
   font-family: var(--font-accent);
-  font-size: clamp(1.4rem, 4.2vw, 1.6rem);
+  font-size: clamp(1.52rem, 4.6vw, 1.76rem);
   line-height: 1.58;
   letter-spacing: 0.01em;
   color: #2a2417;
@@ -839,9 +842,9 @@ body.no-scroll {
 
 .psalm-reference {
   display: block;
-  color: var(--blue);
+  color: var(--blue-strong);
   margin-top: 10px;
-  font-size: clamp(1.02rem, 3.3vw, 1.14rem);
+  font-size: clamp(1.16rem, 3.8vw, 1.34rem);
   font-weight: 700;
   letter-spacing: 0.03em;
 }
@@ -875,6 +878,8 @@ body.no-scroll {
 .corner-tl::before,
 .corner-tr::before {
   background-image: url("assets/floral-top.svg");
+  top: -20%;
+  left: -20%;
 }
 
 .corner-tl {
@@ -948,7 +953,7 @@ body.no-scroll {
   }
 
   .gallery-scroll {
-    grid-auto-columns: minmax(220px, 38%);
+    grid-auto-columns: minmax(240px, 42%);
   }
 
   .box::after {
@@ -989,19 +994,19 @@ body.no-scroll {
   }
 
   .gallery-scroll {
-    grid-auto-columns: minmax(180px, 70%);
+    grid-auto-columns: minmax(196px, 74%);
     gap: 16px;
-    padding: 22px 14px 30px;
+    padding: 24px 14px 38px;
   }
 
   .gallery-item {
-    transform: scale(0.97);
+    transform: scale(0.99);
   }
 
   .psalm {
     width: min(100%, 540px);
     padding: 0;
-    font-size: clamp(1.5rem, 5.3vw, 1.7rem);
+    font-size: clamp(1.62rem, 5.7vw, 1.86rem);
     line-height: 1.62;
   }
 
@@ -1160,7 +1165,7 @@ body.no-scroll {
   }
 
   .gallery-scroll {
-    grid-auto-columns: minmax(210px, 65%);
+    grid-auto-columns: minmax(224px, 70%);
   }
 
   .age-image-container {
@@ -1183,7 +1188,7 @@ body.no-scroll {
   }
 
   .gallery-scroll {
-    grid-auto-columns: minmax(196px, 68%);
+    grid-auto-columns: minmax(208px, 72%);
   }
 
   .age-image-container {
@@ -1306,18 +1311,18 @@ body.no-scroll {
   }
 
   .gallery-scroll {
-    grid-auto-columns: minmax(160px, 74%);
+    grid-auto-columns: minmax(172px, 78%);
     gap: 12px;
-    padding: 16px 10px 20px;
+    padding: 18px 10px 50px;
   }
 
   .psalm {
-    font-size: clamp(1.35rem, 5vw, 1.55rem);
+    font-size: clamp(1.48rem, 5.4vw, 1.68rem);
     line-height: 1.5;
   }
 
   .psalm-reference {
-    font-size: 1.15rem;
+    font-size: 1.28rem;
   }
 
   .dresscode-card {
