@@ -71,11 +71,12 @@ if (audio) {
       dismissWelcomeOverlay();
       startAudio();
     });
+  } else if (!startButton) {
+    // Si no hay overlay de bienvenida o botón, permitir unlock por cualquier interacción
+    unlockEvents.forEach(([eventName, options]) => {
+      window.addEventListener(eventName, startAudio, options);
+    });
   }
-
-  unlockEvents.forEach(([eventName, options]) => {
-    window.addEventListener(eventName, startAudio, options);
-  });
 
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible' && !started && !audio.paused) {

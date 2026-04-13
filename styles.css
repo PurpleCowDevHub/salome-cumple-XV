@@ -149,7 +149,7 @@ body.no-scroll {
   box-shadow: 0 14px 28px rgba(79, 115, 157, 0.24);
   color: var(--white);
   font-family: var(--font-accent);
-  font-size: clamp(1.04rem, 3vw, 1.16rem);
+  font-size: 1.2rem;
   letter-spacing: 0.05em;
   cursor: pointer;
   transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
@@ -298,7 +298,7 @@ body.no-scroll {
 }
 
 .eyebrow {
-  margin: 0;
+  margin: 0 0 12px;
   font-size: var(--fs-intro-primary);
   letter-spacing: 0.04em;
   font-family: var(--font-accent);
@@ -314,6 +314,26 @@ body.no-scroll {
   font-weight: 400;
   color: var(--black);
   text-shadow: var(--shadow-text);
+}
+
+.age-image-container {
+  margin: 24px -28px 16px;
+  padding: 0;
+  background: var(--surface-section);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: clamp(180px, 35vh, 500px);
+}
+
+.age-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .section-divider {
@@ -393,10 +413,10 @@ body.no-scroll {
   font-weight: 400;
   letter-spacing: 0.05em;
   line-height: 1;
-  color: #87b4ea;
+  color: #FCC5C5;
   -webkit-text-stroke: 0.8px rgba(20, 28, 36, 0.8);
   paint-order: stroke fill;
-  text-shadow: 0 0 12px rgba(155, 200, 255, 0.55), 0 4px 10px rgba(8, 12, 18, 0.75);
+  text-shadow: 0 0 12px #EF8786, 0 4px 10px rgba(8, 12, 18, 0.75);
   white-space: nowrap;
   pointer-events: none;
 }
@@ -484,7 +504,7 @@ body.no-scroll {
 .dresscode-role {
   margin: 0;
   font-family: var(--font-body);
-  font-size: var(--fs-label);
+  font-size: clamp(1.1rem, 3.2vw, 1.28rem);
   font-weight: 700;
   letter-spacing: 0.02em;
   color: var(--gold-strong);
@@ -493,7 +513,7 @@ body.no-scroll {
 .dresscode-style {
   margin: 0;
   font-family: var(--font-body);
-  font-size: clamp(0.98rem, 3.5vw, 1.12rem);
+  font-size: clamp(1.2rem, 4vw, 1.4rem);
   font-weight: 400;
   color: var(--black);
   line-height: 1.35;
@@ -638,7 +658,7 @@ body.no-scroll {
 .location-address {
   margin: 0;
   font-family: var(--font-body);
-  font-size: var(--fs-body-md);
+  font-size: clamp(1.2rem, 3.8vw, 1.38rem);
   font-weight: 400;
   color: var(--black);
   line-height: 1.5;
@@ -647,7 +667,7 @@ body.no-scroll {
 .event-date {
   margin: 0;
   font-family: var(--font-body);
-  font-size: var(--fs-body-md);
+  font-size: clamp(1.3rem, 4.2vw, 1.5rem);
   font-weight: 400;
   color: var(--black);
   letter-spacing: 0.01em;
@@ -656,7 +676,7 @@ body.no-scroll {
 .event-time {
   margin: 0;
   font-family: var(--font-body);
-  font-size: var(--fs-body-md);
+  font-size: clamp(1.3rem, 4.2vw, 1.5rem);
   font-weight: 400;
   color: var(--black);
   letter-spacing: 0.01em;
@@ -664,28 +684,31 @@ body.no-scroll {
 
 .maps-button {
   display: inline-block;
-  padding: 14px 34px;
-  background: var(--blue);
+  padding: 16px 42px;
+  background: linear-gradient(135deg, #769ac1 0%, var(--blue-strong) 100%);
   color: var(--white);
   text-decoration: none;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-body);
-  font-size: 1.2rem;
-  font-weight: 700;
+  border-radius: 999px;
+  font-family: var(--font-accent);
+  font-size: 1.3rem;
+  font-weight: 400;
   text-align: center;
-  transition: transform var(--transition-base), box-shadow var(--transition-base), background-color var(--transition-base);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
   border: none;
   cursor: pointer;
   margin-top: 15px;
-  box-shadow: 0 6px 14px rgba(105, 142, 185, 0.28);
-  letter-spacing: 0.06em;
+  box-shadow: 0 14px 28px rgba(79, 115, 157, 0.24);
+  letter-spacing: 0.05em;
   text-shadow: var(--shadow-text);
 }
 
+.maps-button:active {
+  transform: translateY(1px);
+}
+
 .maps-button:hover {
-  box-shadow: 0 8px 20px rgba(105, 142, 185, 0.4);
-  transform: translateY(-3px);
-  background: var(--blue-strong);
+  filter: brightness(1.03);
+  box-shadow: 0 16px 32px rgba(79, 115, 157, 0.3);
 }
 
 .gallery-section {
@@ -717,8 +740,10 @@ body.no-scroll {
   font-family: var(--font-accent);
   font-size: var(--fs-intro-secondary);
   line-height: 1.3;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
+  font-weight: 400;
   color: var(--black);
+  text-shadow: var(--shadow-text);
   text-wrap: balance;
 }
 
@@ -785,7 +810,7 @@ body.no-scroll {
   padding: 0;
   text-align: center;
   font-family: var(--font-accent);
-  font-size: clamp(1.22rem, 3.7vw, 1.42rem);
+  font-size: clamp(1.4rem, 4.2vw, 1.6rem);
   line-height: 1.58;
   letter-spacing: 0.01em;
   color: #2a2417;
@@ -914,8 +939,12 @@ body.no-scroll {
     padding: 40px 34px;
   }
 
+  .age-image-container {
+    min-height: 500px;
+  }
+
   .maps-button {
-    padding: 14px 40px;
+    padding: 16px 48px;
   }
 
   .gallery-scroll {
@@ -955,6 +984,10 @@ body.no-scroll {
     padding-right: 20px;
   }
 
+  .welcome-button {
+    font-size: 1.5rem;
+  }
+
   .gallery-scroll {
     grid-auto-columns: minmax(180px, 70%);
     gap: 16px;
@@ -968,13 +1001,13 @@ body.no-scroll {
   .psalm {
     width: min(100%, 540px);
     padding: 0;
-    font-size: clamp(1.3rem, 5.1vw, 1.52rem);
+    font-size: clamp(1.5rem, 5.3vw, 1.7rem);
     line-height: 1.62;
   }
 
   .psalm-reference {
     margin-top: 12px;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
   }
 
   .event-info {
@@ -1021,13 +1054,13 @@ body.no-scroll {
   .dresscode-style,
   .location-address,
   .countdown-message {
-    font-size: 1.22rem;
+    font-size: 1.38rem;
     line-height: 1.42;
   }
 
   .event-date,
   .event-time {
-    font-size: 1.34rem;
+    font-size: 1.52rem;
   }
 
   .location-name {
@@ -1044,9 +1077,9 @@ body.no-scroll {
   }
 
   .maps-button {
-    padding: 16px 24px;
-    font-size: 1.3rem;
-    letter-spacing: 0.03em;
+    padding: 18px 32px;
+    font-size: 1.55rem;
+    letter-spacing: 0.05em;
   }
 
   .event-title,
@@ -1067,6 +1100,8 @@ body.no-scroll {
 
   .rsvp-text {
     font-size: clamp(1.32rem, 5.1vw, 1.5rem);
+    line-height: 1.45;
+    letter-spacing: 0.02em;
   }
 
   .event-hashtag {
@@ -1127,6 +1162,10 @@ body.no-scroll {
   .gallery-scroll {
     grid-auto-columns: minmax(210px, 65%);
   }
+
+  .age-image-container {
+    min-height: 320px;
+  }
 }
 
 @media (min-width: 361px) and (max-width: 400px) {
@@ -1145,6 +1184,10 @@ body.no-scroll {
 
   .gallery-scroll {
     grid-auto-columns: minmax(196px, 68%);
+  }
+
+  .age-image-container {
+    min-height: 240px;
   }
 }
 
@@ -1165,6 +1208,10 @@ body.no-scroll {
     padding: 10px;
   }
 
+  .welcome-button {
+    font-size: 1.8rem;
+  }
+
   .box {
     border-radius: 24px;
   }
@@ -1179,29 +1226,34 @@ body.no-scroll {
     padding: 32px 22px 24px;
   }
 
+  .age-image-container {
+    margin: 24px -16px 16px;
+    min-height: 200px;
+  }
+
   .event-title,
   .dresscode-title {
-    font-size: clamp(3.1rem, 13.6vw, 3.8rem);
+    font-size: 4.2rem;
   }
 
   .gallery-title {
-    font-size: clamp(2.65rem, 12.3vw, 3.1rem);
+    font-size: clamp(3.3rem, 12.3vw, 4.4rem);
     margin-top: 12px;
-  }
+  }}
 
   .oval-name {
-    font-size: clamp(4.6rem, 21vw, 5.2rem);
+    font-size: 7rem;
     bottom: -14px;
   }
 
   .eyebrow {
-    font-size: clamp(1.24rem, 4.9vw, 1.38rem);
+    font-size: 1.65rem;
     line-height: 1.28;
   }
 
   .description,
   .rsvp-text {
-    font-size: clamp(1.16rem, 4.6vw, 1.3rem);
+    font-size: clamp(1.38rem, 5.2vw, 1.56rem);
     line-height: 1.35;
   }
 
@@ -1223,7 +1275,7 @@ body.no-scroll {
   .location-label,
   .dresscode-role,
   .dresscode-note-title {
-    font-size: 1.04rem;
+    font-size: 1.24rem;
   }
 
   .event-date,
@@ -1231,7 +1283,7 @@ body.no-scroll {
   .dresscode-style,
   .location-address,
   .countdown-message {
-    font-size: 1.12rem;
+    font-size: 1.4rem;
     line-height: 1.35;
   }
 
@@ -1244,13 +1296,13 @@ body.no-scroll {
   }
 
   .countdown-unit {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
   }
 
   .maps-button {
-    padding: 14px 20px;
-    font-size: 1.12rem;
-    letter-spacing: 0.02em;
+    padding: 16px 26px;
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
   }
 
   .gallery-scroll {
@@ -1260,12 +1312,12 @@ body.no-scroll {
   }
 
   .psalm {
-    font-size: clamp(1.08rem, 4.6vw, 1.2rem);
+    font-size: clamp(1.35rem, 5vw, 1.55rem);
     line-height: 1.5;
   }
 
   .psalm-reference {
-    font-size: 0.98rem;
+    font-size: 1.15rem;
   }
 
   .dresscode-card {
@@ -1284,7 +1336,7 @@ body.no-scroll {
 
   .event-hashtag {
     margin-top: 78px;
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   .corner {
@@ -1330,4 +1382,3 @@ body.no-scroll {
   .box::before {
     left: -8px;
   }
-}
