@@ -103,6 +103,15 @@ body.no-scroll {
   will-change: opacity, transform;
 }
 
+html.fonts-loading .welcome-card > * {
+  opacity: 0;
+}
+
+html.fonts-ready .welcome-card > * {
+  opacity: 1;
+  transition: opacity 0.24s ease;
+}
+
 .welcome-card::before {
   content: "";
   position: absolute;
